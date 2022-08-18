@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Autor Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <header>
+            <div class="container">
+                <h2>Cargar Autor aqui</h2>
+            </div>
+        </header>
+
+        <div class="container">
+            <form action="/autor/registro" method="post">
+                
+                <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Nombre del autor" class="form-group">
+                </div>   
+                
+                <div th:if="${errorAutor!=null}">
+                    <div>
+                        <h5>Error al generar un Autor</h5>
+                        <p th:text="${errorAutor}"></p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary"> Subir </button>
+            </form>
+        </div>
+        
+    </body>
+</html>

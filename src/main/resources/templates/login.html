@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h4>LOGIN</h4>
+        </div>
+
+        <div>
+            <form th:action="@{/logincheck}" method="post">
+                <div>
+                    <h4>Accede a la bibioteca</h4>
+                </div>
+                <div>
+                    <input 
+                    type="email" 
+                    placeholder="Email" 
+                    name="email" 
+                    th:value="${email}">
+                </div>
+                <div>
+                    <input 
+                    type="password" 
+                    placeholder="Contraseña" 
+                    name="password" 
+                    th:value="${password}">
+                </div>
+
+                <div>
+                    <button type="submit">Ingresar!</button>
+                </div>
+            </form>
+
+            <section>
+                <div>
+                    <div>
+                        <button>
+                            <a th:href="@{/}">Volver</a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <div th:if="${errorLogin != null}">
+                <h4>Error!</h4>
+                <p th:text="${errorLogin}"></p>
+            </div>
+        </div>
+    </body>
+</html>

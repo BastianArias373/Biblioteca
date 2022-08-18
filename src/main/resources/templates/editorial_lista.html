@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        
+        <div>
+            <h4>Lista de Editoriales</h4>
+        </div>
+        
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>MODIFICAR</th>
+                    </tr>
+                </thead>
+                <tbody th:each="editorial : ${editoriales}">
+                    <tr>
+                        <th th:text="${editorial.id}"></th>
+                        <td th:text="${editorial.nombre}"></td>
+                        <td>
+                            <a th:href="@{/editorial/modificar/__${editorial.id}__}">
+                                <i>Edit</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        
+
+    </body>
+</html>

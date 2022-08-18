@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>Libro modificar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h4>Modificar Libro</h4>
+        </div>
+
+        <div>
+            <form th:action="@{/libro/modificar/__${libro.isbn}__}" method="post">
+                <div>
+                    <input 
+                    th:value="${libro.isbn}" 
+                    name="isbn" 
+                    type="number">
+                </div>
+                <div>
+                    <input 
+                    th:value="${libro.titulo}" 
+                    name="titulo" 
+                    type="text">
+                </div>
+                <div>
+                    <input 
+                    th:value="${libro.ejemplares}" 
+                    name="ejemplares" 
+                    type="number">
+                </div>
+                <div>
+                    <select name="idAutor">
+                        <option th:value="${autorDelLibro.id}" 
+                                th:text="${autorDelLibro.nombre}">
+                        </option>
+                        <option th:each="autor : ${autores}"
+                                th:value="${autor.id}"
+                                th:text="${autor.nombre}"
+                        />
+                    </select>
+                </div>
+                <div>
+                    <select name="idEditorial">
+                        <option th:value="${editorialDelLibro.id}" 
+                                th:text="${editorialDelLibro.nombre}">
+                        </option>
+                        <option th:each="editorial : ${editoriales}"
+                                th:value="${editorial.id}"
+                                th:text="${editorial.nombre}"
+                        />
+                    </select>
+                </div>
+                <button type="submit">Actualizar</button>
+            </form>
+        </div>
+    </body>
+</html>

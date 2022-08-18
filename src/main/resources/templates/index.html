@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>ESTAMOS EN EL INDEX</div>
+        <div>
+            <h1>Encuentra lo que necesites aqui!</h1>    
+        </div>
+        
+        <div th:if="${exitoEditorial!=null}">
+            <div>
+                <h5>Exito al crear una Editorial</h5>
+                <p th:text="${exitoEditorial}"></p>
+            </div>
+        </div>
+        
+        <div th:if="${exitoLibro!=null}">
+            <div>
+                <h5>Exito al crear un Libro</h5>
+                <p th:text="${exitoLibro}"></p>
+            </div>
+        </div>
+        
+        <div th:if="${exitoAutor!=null}">
+            <div>
+                <h5>Exito al crear un Autor</h5>
+                <p th:text="${exitoAutor}"></p>
+            </div>
+        </div>
+        
+        <div th:if="${exitoUsuario!=null}">
+            <div>
+                <h5>Registrado con exito!</h5>
+                <p th:text="${exitoUsuario}"></p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>Libro form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <header>
+            <div>
+                <h2>Cargar Libro aqui</h2>
+            </div>
+        </header>
+        
+        <div>
+            <form action="/libro/registro" method="post">
+                <div>
+                    <input 
+                    type="number" 
+                    placeholder="ISBN" 
+                    name="isbn"
+                    >
+                </div>
+                <div>
+                    <input 
+                    type="text" 
+                    placeholder="Titulo" 
+                    name="titulo"
+                    >
+                </div>
+                <div>
+                    <input 
+                    type="number"
+                    placeholder="Nro de Ejemplares" 
+                    name="ejemplares"
+                    >
+                </div>
+                
+                <div>
+                    <select name="idAutor">
+                        <option>Selecionar Autor</option>
+                        <option th:each="autor : ${autores}"
+                                th:value="${autor.id}"
+                                th:text="${autor.nombre}"
+                                />
+                    </select>
+                </div>
+                
+                <div>
+                    <select name="idEditorial">
+                        <option>Selecionar Editorial</option>
+                        <option th:each="editorial : ${editoriales}"
+                                th:value="${editorial.id}"
+                                th:text="${editorial.nombre}"
+                                />
+                    </select>
+                </div>
+                
+                <div th:if="${errorLibro!=null}">
+                    <div>
+                        <h5>Error al generar un Libro</h5>
+                        <p th:text="${errorLibro}"></p>
+                    </div>
+                </div>
+                
+                <button type="submit">Subir</button>
+            </form>
+        </div>
+    </body>
+</html>

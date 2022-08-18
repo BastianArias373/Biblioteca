@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Editorial Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <header>
+            <div>
+                <h2>Cargar Editorial aqui</h2>
+            </div>
+        </header>
+        
+        <div>
+            <form action="/editorial/registro" method="post">
+                <div>
+                    <input type="text" name="nombre" placeholder="Nombre de la Editorial">
+                </div>
+                
+                <div th:if="${errorEditorial!=null}">
+                    <div>
+                        <h5>Error al generar una Editorial</h5>
+                        <p th:text="${errorEditorial}"></p>
+                    </div>
+                </div>
+                
+                
+                <button type="submit">Subir</button>
+            </form>
+        </div>
+    </body>
+</html>
