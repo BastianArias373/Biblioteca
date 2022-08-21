@@ -6,6 +6,7 @@ import com.BastianAriasDevArts.biblioteca.excepciones.MiException;
 import com.BastianAriasDevArts.biblioteca.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UsuarioServicio implements UserDetailsService{
@@ -83,7 +86,18 @@ public class UsuarioServicio implements UserDetailsService{
         if (usuario != null) {
             List<GrantedAuthority> permisos = new ArrayList();
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+            //agregamos a la lista permisos
             permisos.add(p);
+            
+            //guardar al usuario autenticado en la sesion web
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            
+            //guardamos en un objeto HttpSession el llamado del atibuto que nos trae la session
+            HttpSession session = attr.getRequest().getSession(true);
+            
+            //vamos a pedir datos de la session http para setearle los atributos
+            session.setAttribute("usuariosession", usuario);    //llave para traer al usuario logueado
+            
             User user = new User(usuario.getEmail(),usuario.getPassword(),permisos);
             return user;
             

@@ -1,8 +1,10 @@
 package com.BastianAriasDevArts.biblioteca.controladores;
 
 
+import com.BastianAriasDevArts.biblioteca.entidades.Usuario;
 import com.BastianAriasDevArts.biblioteca.excepciones.MiException;
 import com.BastianAriasDevArts.biblioteca.servicios.UsuarioServicio;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -69,7 +71,16 @@ public class PortalControlador {
     
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')") //permisos antes de la peticion GET
     @GetMapping("/inicio")
-    public String inicio(){
-        return "inicio.html";
+    public String inicio(HttpSession session){
+        
+        //traemos al usuario con los datos de la sesion
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+        
+        //comparamos si este tiene el role ADMIN
+        if (logueado.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";         //redirect para ADMINs
+        }
+        
+        return "inicio.html";       //si no es admin va al inicio para USERs
     }
 }
