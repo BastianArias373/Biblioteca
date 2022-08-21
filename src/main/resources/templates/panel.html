@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+    <head>
+        <title>INICIO ADMIN</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>INICIO - Tu Pagina principal - para admins</div>
+
+        <nav>
+            <div>
+                <a href="">
+                    <img src="" alt="">
+                </a>
+            </div>
+
+            <button>
+                <span></span>
+            </button>
+
+            <div>
+                <ul>
+
+                    <li>
+                        <a href="">Libros</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/libro/lista}">Listar libros</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/libro/registrar}">Crear libro</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="">Autores</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/autor/lista}">Listar autores</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/autor/registrar}">Crear autor</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="">Editoriales</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/editorial/lista}">Listar editoriales</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/editorial/registrar}">Crear editorial</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="" role="button">Perfil</a>
+                        <ul>
+                            <li>
+                                <a href="/logout">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            
+        </nav>
+
+        
+        
+        
+
+        <div th:if="${exitoUsuario!=null}">
+            <div>
+                <h5>Registrado con exito!</h5>
+                <p th:text="${exitoUsuario}"></p>
+            </div>
+        </div>
+    </body>
+</html>

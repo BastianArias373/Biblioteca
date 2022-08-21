@@ -5,13 +5,24 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
     </head>
     <body>
+
+        <nav>
+            <ul>
+                <li><a href="/login">Ingresar</a></li>
+                <li><a href="/registrar">Registrate!</a></li>
+            </ul>
+        </nav>
+
+
         <div>ESTAMOS EN EL INDEX</div>
         <div>
             <h1>Encuentra lo que necesites aqui!</h1>    
         </div>
         
+
         <div th:if="${exitoEditorial!=null}">
             <div>
                 <h5>Exito al crear una Editorial</h5>

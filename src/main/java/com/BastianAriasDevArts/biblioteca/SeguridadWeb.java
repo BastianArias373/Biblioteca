@@ -36,6 +36,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()                                //autorizar solicitudes
+                    .antMatchers("/admin/*").hasRole("ADMIN")       //solo entran a esta class los ADMIN
                     .antMatchers("/css/*","/js/*","/img/*","/**")   //carpetas accesibles
                     .permitAll()                                    //permitir todo
                 .and()
@@ -50,7 +51,10 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter {
                 .logout()                   //config salida del sistema
                     .logoutUrl("/logout")   //URL para el cierre de sesion
                     .logoutSuccessUrl("/")  //URL donde nos envia exitosamente!
-                    .permitAll();           //permitir todo
+                    .permitAll()            //permitir todo
+                .and()
+                .csrf()
+                    .disable();           
     }
     
     

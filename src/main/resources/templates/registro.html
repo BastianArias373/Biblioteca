@@ -47,6 +47,12 @@
                     </button>
                 </div>
             </form>
+            
+            <div>
+                <button>
+                    <a th:href="@{/}">Volver</a>
+                </button>
+            </div>
             <div th:if="${errorUsuario != null}">
                 <h5>Error!</h5>
                 <p th:text="${errorUsuario}"></p>
