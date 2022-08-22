@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 
-<html xmlns:th = "http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<html xmlns:th = "http://www.thymeleaf.org" 
+      xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+    
+    <head th:replace="/fragments/head :: head"></head>
 
     <body>
         
@@ -22,7 +20,7 @@
                         <th>STOCK</th>
                         <th>AUTOR</th>
                         <th>EDITORIAL</th>
-                        <th>MODIFICAR</th>
+                        <th sec:authorize="hasRole('ADMIN')">MODIFICAR</th>
                     </tr>
                 </thead>
                 <tbody th:each="libro : ${libros}">
@@ -32,7 +30,7 @@
                         <td th:text="${libro.ejemplares}"></td>
                         <td th:text="${libro.autor.nombre}"></td>
                         <td th:text="${libro.editorial.nombre}"></td>
-                        <td>
+                        <td sec:authorize="hasRole('ADMIN')" >
                             <a th:href="@{/libro/modificar/__${libro.isbn}__}">
                                 <i>Edit</i>
                             </a>

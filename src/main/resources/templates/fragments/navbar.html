@@ -1,0 +1,70 @@
+<nav>
+    <div>
+        <a href="">
+            <img src="" alt="">
+        </a>
+    </div>
+
+    <button>
+        <span></span>
+    </button>
+
+    <div>
+        <ul>
+
+            <li th:if="${session.usuariosession != null}">
+                <a href="">Libros</a>
+                <ul>
+                    <li>
+                        <a th:href="@{/libro/lista}">Listar libros</a>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/libro/registrar}">Crear libro</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li th:if="${session.usuariosession != null}">
+                <a href="">Autores</a>
+                <ul>
+                    <li>
+                        <a th:href="@{/autor/lista}">Listar autores</a>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/autor/registrar}">Crear autor</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li th:if="${session.usuariosession != null}">
+                <a href="">Editoriales</a>
+                <ul>
+                    <li>
+                        <a th:href="@{/editorial/lista}">Listar editoriales</a>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/editorial/registrar}">Crear editorial</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li th:if="${session.usuariosession != null}">
+                <a href="" role="button">Perfil</a>
+                <ul>
+                    <li>
+                        <a href="/logout">Cerrar Sesion</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li th:if="${session.usuariosession == null}">
+                <a href="/login">Ingresar</a>
+            </li>
+            
+            <li th:if="${session.usuariosession == null}">
+                <a href="/registrar">Registrate!</a>
+            </li>
+        </ul>
+    </div>
+
+</nav>

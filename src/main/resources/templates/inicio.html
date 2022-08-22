@@ -7,66 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>INICIO - Tu Pagina principal</div>
+        <div>
+            <h3>INICIO - Tu Pagina principal</h3> 
+        </div>
+        <div th:if="${session.usuariosession != null}">
+            <h2 th:text=" 'Hola! ' + ${session.usuariosession.nombre} + ', has vuelto.'"></h2>
+        </div>
 
-        <nav>
-            <div>
-                <a href="">
-                    <img src="" alt="">
-                </a>
-            </div>
-
-            <button>
-                <span></span>
-            </button>
-
-            <div>
-                <ul>
-
-                    <li>
-                        <a href="">Libros</a>
-                        <ul>
-                            <li>
-                                <a th:href="@{/libro/lista}">Listar libros</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="">Autores</a>
-                        <ul>
-                            <li>
-                                <a th:href="@{/autor/lista}">Listar autores</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="">Editoriales</a>
-                        <ul>
-                            <li>
-                                <a th:href="@{/editorial/lista}">Listar editoriales</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="" role="button">Perfil</a>
-                        <ul>
-                            <li>
-                                <a href="/logout">Cerrar Sesion</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-            
-        </nav>
-
-        
-        
-        
+        <nav th:replace="/fragments/navbar :: nav"></nav>
 
         <div th:if="${exitoUsuario!=null}">
             <div>

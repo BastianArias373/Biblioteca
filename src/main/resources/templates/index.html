@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns:th = "http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-    </head>
+<html xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/extras/spring-security">
+    
+    <head th:replace="/fragments/head :: head"></head>
     <body>
 
-        <nav>
-            <ul>
-                <li><a href="/login">Ingresar</a></li>
-                <li><a href="/registrar">Registrate!</a></li>
-            </ul>
-        </nav>
+        <nav th:replace="/fragments/navbar :: nav"></nav>
 
 
         <div>ESTAMOS EN EL INDEX</div>
