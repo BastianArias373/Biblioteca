@@ -11,7 +11,10 @@
             <h4>Registrate aca</h4>
         </div>
         <div>
-            <form th:action="@{/registro}" method="post">
+            <form 
+            th:action="@{/registro}" 
+            method="post" 
+            enctype="multipart/form-data">
 
                 <div>
                     <input 
@@ -26,6 +29,11 @@
                     name="email"
                     type="email" 
                     placeholder="Email">
+                </div>
+                <div>
+                    <input 
+                    name="archivo"
+                    type="file">
                 </div>
                 <div>
                     <input 

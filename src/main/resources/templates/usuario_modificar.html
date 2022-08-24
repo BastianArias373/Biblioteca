@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="/fragments/head :: head"></head>
+    
+    <body>
+
+        <nav th:replace="/fragments/navbar :: nav"></nav>
+        
+        <div>
+
+            <form 
+            th:action="@{/perfil/__${usuario.id}__}" 
+            method="POST" 
+            enctype="multipart/form-data">
+
+                <div>
+                    <h3>Editar Usuario</h3>
+                </div>
+                <div>
+                    <input 
+                    hidden 
+                    name="id" 
+                    th:value="${id}">
+                </div>
+                <div>
+                    <input 
+                    type="text" 
+                    name="nombre"  
+                    th:value="${usuario.nombre}">
+                </div>
+                <div>
+                    <input 
+                    type="email" 
+                    name="email"  
+                    th:value="${usuario.email}">
+                </div>
+                <div>
+                    <input 
+                    type="file" 
+                    name="archivo" >
+                </div>
+                <div >
+                    <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="contraseña">
+                </div>
+                <div>
+                    <input 
+                    type="password" 
+                    name="password2" 
+                    placeholder="repetir contraseña">
+                </div>
+
+
+                <button type="submit">Actualizar</button>
+            </form>
+
+            <section>
+                <div>
+                    <div>
+                        <a th:href="@{/inicio}">Volver</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </body>
+</html>

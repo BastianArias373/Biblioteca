@@ -13,6 +13,11 @@
         <div th:if="${session.usuariosession != null}">
             <h2 th:text=" 'Hola! ' + ${session.usuariosession.nombre} + ', has vuelto.'"></h2>
         </div>
+        <div>
+            <a th:if="${session.usuariosession.imagen != null}">
+                <img class="logo" th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
+            </a>
+        </div>
 
         <nav th:replace="/fragments/navbar :: nav"></nav>
 

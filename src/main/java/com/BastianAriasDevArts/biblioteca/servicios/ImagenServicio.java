@@ -6,6 +6,7 @@ import com.BastianAriasDevArts.biblioteca.repositorios.ImagenRepositorio;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -14,16 +15,16 @@ public class ImagenServicio {
     @Autowired
     private ImagenRepositorio imagenRepositorio;
     
+    @Transactional
     public Imagen guardar(MultipartFile archivo) throws MiException{
         
         if (archivo != null) {
             try {
                 Imagen imagen = new Imagen();
                 imagen.setMime(archivo.getContentType());   //seteamos el tipo de contenido
-                imagen.setNombre(archivo.getName());        
+                imagen.setNombre(archivo.getOriginalFilename());        
                 imagen.setContenido(archivo.getBytes());    //seteamos los bytes
-                imagenRepositorio.save(imagen);
-                
+                return imagenRepositorio.save(imagen);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
@@ -31,6 +32,7 @@ public class ImagenServicio {
         return null;
     }
     
+    @Transactional
     public Imagen actualizar(MultipartFile archivo, String idImagen) throws MiException{
         
         if (archivo != null) {
@@ -46,9 +48,9 @@ public class ImagenServicio {
                 }
                 
                 imagen.setMime(archivo.getContentType());   //seteamos el tipo de contenido
-                imagen.setNombre(archivo.getName());        
+                imagen.setNombre(archivo.getOriginalFilename());        
                 imagen.setContenido(archivo.getBytes());    //seteamos los bytes
-                imagenRepositorio.save(imagen);
+                return imagenRepositorio.save(imagen);
                 
             } catch (Exception e) {
                 System.err.println(e.getMessage());

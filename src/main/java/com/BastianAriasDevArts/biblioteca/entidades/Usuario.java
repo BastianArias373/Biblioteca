@@ -67,6 +67,14 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+    
     
     
     
